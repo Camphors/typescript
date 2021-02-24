@@ -1,4 +1,5 @@
 // 类
+// 需要运行在es5或以上版本  tsc 类.ts -t es6
 class Greeter {
 	greeting: string;
 	constructor(message: string) {

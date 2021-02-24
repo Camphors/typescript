@@ -56,3 +56,15 @@ if(<Fish>pet.swim) {
 } else {
 	(<Bird>pet).fly();
 }
+
+// 类型别名
+type Name = string;
+type = NameResolver = () => string;
+type NameOrResolver = Name | NameResolver;
+funtion getName(n: NameOrResolver): Name {
+	if (typeof n === 'string') {
+		return 'n';
+	} else {
+		return n();
+	}
+}

@@ -43,12 +43,12 @@ function loggingIdentity(arg) {
 // 我们需要传入符合约束类型的值，必须包含必须的属性
 loggingIdentity({ length: 10, value: 3 });
 // 在泛型约束中使用类型参数
-// function getProperty(obj: T, key: K) {
-// 	return obj[key]
-// }
-// let x = { a: 1, b: 2, c: 3, d: 4 };
-// getProperty(x, 'a');
-// getProperty(x, 'm'); // error: Argument of type 'm' isn't assignable to 'a' | 'b' | 'c' | 'd'.
+function getProperty(obj, key) {
+    return obj[key];
+}
+var x = { a: 1, b: 2, c: 3, d: 4 };
+getProperty(x, 'a');
+getProperty(x, 'm'); // error: Argument of type 'm' isn't assignable to 'a' | 'b' | 'c' | 'd'.
 // 在ts使用泛型创建工厂函数时，需要引用构造函数的类类型
 function create(c) {
     return new c();
@@ -85,6 +85,5 @@ var Lion = /** @class */ (function (_super) {
 function createInstance(c) {
     return new c();
 }
-console.log(createInstance(Lion).keeper.nametag); // typechecks!
-console.log(createInstance(Bee).keeper.hasMask);
-; // typechecks!
+createInstance(Lion).keeper.nametag; // typechecks!
+createInstance(Bee).keeper.hasMask; // typechecks!
